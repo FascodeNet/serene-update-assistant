@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+source /etc/os-release
+NEW_RELEASE=$(curl https://repo.dyama.net/new_serene_updater/latest_release)
+if [ ${VERSION_ID} -lt ${NEW_RELEASE} ]; then
+    mkdir -p /tmp/update_assistant
+    cd /tmp/update_assistant
+    curl "https://repo.dyama.net/new_serene_updater/scripts/${NEW_RELEASE}.sh" > update.sh
+    chmod +x update.sh
+    ./update.sh
+fi

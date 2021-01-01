@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(serene_update_assistant CXX)
+add_subdirectory(lib/src)
+add_subdirectory(gui/src)
+add_subdirectory(cui/src)

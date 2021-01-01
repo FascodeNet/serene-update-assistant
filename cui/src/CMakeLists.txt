@@ -1,0 +1,2 @@
+add_executable(serene_updater_cui main.cpp)
+target_link_libraries(serene_updater_cui serene_updater)

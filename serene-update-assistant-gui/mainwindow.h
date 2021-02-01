@@ -1,8 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QTranslator>
 #include <QMainWindow>
-
+#include "updatertray.h"
+#include "updatercore.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,5 +19,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    UpdaterTray *upt=nullptr;
+    UpdaterCore *core=nullptr;
 };
 #endif // MAINWINDOW_H

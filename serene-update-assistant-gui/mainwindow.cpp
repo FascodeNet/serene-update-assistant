@@ -6,6 +6,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    upt=new UpdaterTray();
+    core=new UpdaterCore();
+    ui->currentosver_label->setText(QString::fromStdString(core->check_current_ver()));
 }
 
 MainWindow::~MainWindow()

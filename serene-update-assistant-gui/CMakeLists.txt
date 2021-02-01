@@ -35,6 +35,10 @@ if(ANDROID)
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    updatertray.cpp
+    updatertray.h
+    updatercore.cpp
+    updatercore.h
     ${TS_FILES}
   )
 else()
@@ -43,10 +47,13 @@ else()
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    updatertray.cpp
+    updatertray.h
+    updatercore.cpp
+    updatercore.h
     ${TS_FILES}
   )
 endif()
 
 target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-
-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+#qt5_create_translation(QM_FILES ${TS_FILES})

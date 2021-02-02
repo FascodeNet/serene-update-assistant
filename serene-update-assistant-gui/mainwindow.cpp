@@ -16,3 +16,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_UpdateCheckButton_clicked()
+{
+    ui->jsontestTextEdit->setPlainText(core->get_json());
+    UpdaterCore::update_info infokun=core->get_update_info();
+    std::cout << infokun.description.toStdString() << std::endl;
+
+}

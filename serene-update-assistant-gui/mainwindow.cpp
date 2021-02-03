@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    upt=new UpdaterTray();
     core=new UpdaterCore();
     ui->currentosver_label->setText(QString::fromStdString(core->check_current_ver()));
 }
@@ -18,8 +17,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_UpdateCheckButton_clicked()
 {
-    ui->jsontestTextEdit->setPlainText(core->get_json());
-    UpdaterCore::update_info infokun=core->get_update_info();
+    //ui->jsontestTextEdit->setPlainText(core->get_json());
+    infokun=core->get_update_info();
     std::cout << infokun.description.toStdString() << std::endl;
-
+    ui->update_ver_label->setText(infokun.vername);
+    ui->vdesc_textlabel->setText(infokun.description);
 }

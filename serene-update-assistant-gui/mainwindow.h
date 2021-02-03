@@ -3,7 +3,6 @@
 
 #include <QTranslator>
 #include <QMainWindow>
-#include "updatertray.h"
 #include "updatercore.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,7 +21,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    UpdaterTray *upt=nullptr;
     UpdaterCore *core=nullptr;
+    UpdaterCore::update_info infokun;
 };
 #endif // MAINWINDOW_H

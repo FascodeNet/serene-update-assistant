@@ -28,7 +28,7 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Network LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Network LinguistTools REQUIRED)
 
 set(TS_FILES serene-update-assistant-gui_ja_JP.ts)
-
+QT5_ADD_RESOURCES(RESOURCES resources.qrc)
 if(ANDROID)
   add_library(serene-update-assistant-gui SHARED
     main.cpp
@@ -39,6 +39,7 @@ if(ANDROID)
     updatertray.h
     updatercore.cpp
     updatercore.h
+    ${RESOURCES}
     ${TS_FILES}
   )
 else()
@@ -51,6 +52,7 @@ else()
     updatertray.h
     updatercore.cpp
     updatercore.h
+    ${RESOURCES}
     ${TS_FILES}
   )
 endif()

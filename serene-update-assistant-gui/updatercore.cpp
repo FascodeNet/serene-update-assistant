@@ -88,7 +88,7 @@ UpdaterCore::update_info UpdaterCore::get_update_info(){
         for(QJsonValue verkun:current_versionskun[current_ver].toObject()["upgrade_ver"].toArray()){
             std::cout << QString::fromUtf8(QJsonDocument(verkun.toObject()).toJson()).toStdString() << std::endl;
             if(verkun.toObject()["ver"].toString() == last_ver){
-                infokun.vername=last_ver;
+                infokun.vername=QString(last_ver);
                 infokun.description=QString(verkun["description"].toString());
                 return infokun;
             }

@@ -48,4 +48,4 @@ add_executable(serene-update-assistant-gui
   )
 
 
-target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets curl)
+target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets curl )

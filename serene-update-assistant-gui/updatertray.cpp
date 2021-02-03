@@ -5,7 +5,7 @@ UpdaterTray::UpdaterTray(QWidget *parent)
     ,menu_(new QMenu(parent))
     ,action_quit(new QAction(tr("&Quit"),parent) )
     ,action_show_settings(new QAction(tr("&Show Updater"),parent))
-    ,main_win(new MainWindow(parent))
+    ,main_win(new MainWindow(this,parent))
 {
     menu_->addAction(action_show_settings);
     menu_->addSeparator();

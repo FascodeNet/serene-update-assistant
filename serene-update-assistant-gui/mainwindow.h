@@ -3,6 +3,7 @@
 
 #include <QTranslator>
 #include <QMainWindow>
+#include <QSystemTrayIcon>
 #include "updatercore.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,15 +14,19 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QSystemTrayIcon *traykun, QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
     void on_UpdateCheckButton_clicked();
 
+    void on_runupdatebutton_clicked();
+
 private:
     Ui::MainWindow *ui;
     UpdaterCore *core=nullptr;
     UpdaterCore::update_info infokun;
+    QSystemTrayIcon* trayiconkun;
+    void send_notification();
 };
 #endif // MAINWINDOW_H

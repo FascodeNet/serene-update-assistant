@@ -15,6 +15,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QTextEdit>
 
 class UpdaterCore
 {
@@ -36,7 +37,7 @@ public:
     std::string check_current_ver();
     update_info get_update_info();
     QString get_json();
-    bool update(update_info* upinfo);
+    bool update(update_info* upinfo,QTextEdit* log_textedit);
 };
 
 #endif // UPDATERCORE_H

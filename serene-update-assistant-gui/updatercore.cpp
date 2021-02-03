@@ -99,7 +99,7 @@ UpdaterCore::update_info UpdaterCore::get_update_info(){
 
 
 }
-bool UpdaterCore::update(update_info* upinfo){
+bool UpdaterCore::update(update_info* upinfo,QTextEdit* log_textedit){
 
     CURL *curl;
     curl=curl_easy_init();

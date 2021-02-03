@@ -97,8 +97,8 @@
      <rect>
       <x>30</x>
       <y>140</y>
-      <width>471</width>
-      <height>171</height>
+      <width>321</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -112,8 +112,8 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>451</width>
-       <height>151</height>
+       <width>301</width>
+       <height>81</height>
       </rect>
      </property>
      <property name="text">
@@ -144,6 +144,19 @@
     </property>
     <property name="flat">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="LogTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>250</y>
+      <width>761</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

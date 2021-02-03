@@ -5,7 +5,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
-        <location filename="mainwindow.cpp" line="23"/>
+        <location filename="mainwindow.cpp" line="24"/>
         <source>Serene Updater Assistant</source>
         <translation>Serene Updater Assistant</translation>
     </message>
@@ -40,7 +40,7 @@
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="24"/>
+        <location filename="mainwindow.cpp" line="25"/>
         <source>New Version %s is found.</source>
         <translation>新しいバージョン%sに更新可能です。</translation>
     </message>

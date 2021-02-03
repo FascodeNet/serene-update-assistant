@@ -13,6 +13,7 @@ MainWindow::MainWindow(QSystemTrayIcon *traykun,QWidget *parent)
     setWindowIcon(QIcon("://icon_circle.png"));
     core=new UpdaterCore();
     ui->currentosver_label->setText(QString::fromStdString(core->check_current_ver()));
+    on_UpdateCheckButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -27,7 +28,7 @@ void MainWindow::send_notification(){
         perror("fork");
         exit(-1);
     }else if(pid ==0){
-        execlp("notify-send","notify-send","-a",app_name.toUtf8().data(),"-i","serene",app_name.toUtf8().data(),contents.toUtf8().data());
+        execlp("notify-send","notify-send","-a",app_name.toUtf8().data(),"-t","5000","-i","serene",app_name.toUtf8().data(),contents.toUtf8().data());
         perror("exec");
         exit(-1);
     }
@@ -53,6 +54,7 @@ void MainWindow::on_UpdateCheckButton_clicked()
         /*trayiconkun->showMessage(tr("Serene Updater Assistant"),QString::asprintf(tr("New Version %s is found.").toUtf8().data(),infokun.vername.toUtf8().data())
                                  ,QIcon("://icon_circle.png"),5000);*/
 
+        //trayiconkun->setIcon(QIcon("://icon_circle_arrived.png"));
         send_notification();
 
     }

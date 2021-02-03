@@ -28,6 +28,7 @@ public:
     struct update_info{
         QString vername;
         QString description;
+        QString download_update_url;
     };
 
     static size_t buffer_w(char* ptr,size_t size,size_t nmemb,void* stream);
@@ -35,6 +36,7 @@ public:
     std::string check_current_ver();
     update_info get_update_info();
     QString get_json();
+    bool update(update_info* upinfo);
 };
 
 #endif // UPDATERCORE_H

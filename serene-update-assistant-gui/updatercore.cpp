@@ -90,6 +90,7 @@ UpdaterCore::update_info UpdaterCore::get_update_info(){
             if(verkun.toObject()["ver"].toString() == last_ver){
                 infokun.vername=QString(last_ver);
                 infokun.description=QString(verkun["description"].toString());
+                infokun.download_update_url=QString(verkun["update_script"].toString());
                 return infokun;
             }
         }
@@ -97,4 +98,56 @@ UpdaterCore::update_info UpdaterCore::get_update_info(){
 
 
 
+}
+bool UpdaterCore::update(update_info* upinfo){
+
+    CURL *curl;
+    curl=curl_easy_init();
+    curl_easy_setopt(curl,CURLOPT_URL,upinfo->download_update_url.toUtf8().data());
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
+    UpdaterCore::curl_buffer *buf;
+    buf=(UpdaterCore::curl_buffer*)malloc(sizeof(UpdaterCore::curl_buffer));
+    buf->data=NULL;
+    buf->size=0;
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, buf);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,UpdaterCore::buffer_w);
+    curl_easy_perform(curl);
+    curl_easy_cleanup(curl);
+    char tmp_kun[]="/tmp/serene_updateXXXXXX";
+    int download_file_f=mkstemp(tmp_kun);
+    String tmp_file_path="/proc/" + std::to_string(getpid()) + "/fd/" + std::to_string(download_file_f) ;
+    std::ofstream out_streamkun(tmp_file_path,std::ios::out | std::ios::binary);
+    umask(022);
+    out_streamkun.write(buf->data,buf->size);
+    out_streamkun.flush();
+    QString script_data=buf->data;
+    free(buf->data);
+    free(buf);
+    out_streamkun.close();
+    close(download_file_f);
+    umask(000);
+    chmod(tmp_kun,0777);
+
+
+    pid_t pid=fork();
+    if(pid < 0){
+        perror("fork");
+        unlink(tmp_kun);
+        exit(-1);
+    }else if(pid ==0){
+        execlp("pkexec","pkexec",tmp_kun,NULL);
+        perror("exec");
+        unlink(tmp_kun);
+        exit(-1);
+    }
+    int status;
+    pid_t responsekun = waitpid(pid, &status, 0);
+    if(responsekun < 0){
+        perror("waitpid");
+        unlink(tmp_kun);
+        exit(-1);
+    }
+    unlink(tmp_kun);
+    //std::cout << script_data.toStdString() << std::endl;
+    return true;
 }

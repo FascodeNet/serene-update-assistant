@@ -38,7 +38,11 @@ set(SOURCESKUN
     updatertray.cpp
     updatertray.h
     updatercore.cpp
-    updatercore.h)
+    updatercore.h
+    ansiescapecodehandler.cpp
+    ansiescapecodehandler.h
+    qtcassert.cpp
+    qtcassert.h)
 qt5_create_translation(_qmFiles ${SOURCESKUN} ${TS_FILES})
 qt5_add_translation(_qmFiles ${TS_FILES})
 add_executable(serene-update-assistant-gui

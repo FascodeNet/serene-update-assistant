@@ -28,9 +28,9 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Network LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Network LinguistTools REQUIRED)
 
 set(TS_FILES serene-update-assistant-gui_ja_JP.ts)
+set(QT_QMAKE_EXECUTABLE /usr/bin/qmake-qt5)
 QT5_ADD_RESOURCES(RESOURCES resources.qrc)
-if(ANDROID)
-  add_library(serene-update-assistant-gui SHARED
+set(SOURCESKUN
     main.cpp
     mainwindow.cpp
     mainwindow.h
@@ -38,24 +38,14 @@ if(ANDROID)
     updatertray.cpp
     updatertray.h
     updatercore.cpp
-    updatercore.h
+    updatercore.h)
+qt5_create_translation(_qmFiles ${SOURCESKUN} ${TS_FILES})
+qt5_add_translation(_qmFiles ${TS_FILES})
+add_executable(serene-update-assistant-gui
+    ${SOURCESKUN}
     ${RESOURCES}
-    ${TS_FILES}
+    ${_qmFiles}
   )
-else()
-  add_executable(serene-update-assistant-gui
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
-    updatertray.cpp
-    updatertray.h
-    updatercore.cpp
-    updatercore.h
-    ${RESOURCES}
-    ${TS_FILES}
-  )
-endif()
+
 
 target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets curl)
-#qt5_create_translation(QM_FILES ${TS_FILES})

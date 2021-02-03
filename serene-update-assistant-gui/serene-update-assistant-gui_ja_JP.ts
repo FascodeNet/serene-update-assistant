@@ -5,16 +5,46 @@
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <source>Serene Updater Assistant</source>
+        <translation>Serene Updater Assistant</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="27"/>
+        <source>Check Update</source>
+        <translation>更新確認</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="40"/>
+        <source>OS ver</source>
+        <translation>OSバージョン</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="53"/>
+        <source>0.0.0.0</source>
+        <translation>0.0.0.0</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="66"/>
+        <source>New Ver</source>
+        <translation>新しいバージョン</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="92"/>
+        <source>Version Description</source>
+        <translation>バージョン概要</translation>
     </message>
 </context>
 <context>
     <name>UpdaterTray</name>
     <message>
         <location filename="updatertray.cpp" line="6"/>
-        <source>&amp;QUIT</source>
+        <source>&amp;Quit</source>
         <translation>終了(&amp;Q)</translation>
+    </message>
+    <message>
+        <location filename="updatertray.cpp" line="7"/>
+        <source>&amp;Show Updater</source>
+        <translation>アップデーターを開く(&amp;S)</translation>
     </message>
 </context>
 </TS>

@@ -8,8 +8,8 @@
  * Do not edit! All changes made to it will be lost.
  */
 
-#ifndef SERENE_DBUS_INTERFACE_H_1612442178
-#define SERENE_DBUS_INTERFACE_H_1612442178
+#ifndef SERENE_DBUS_INTERFACE_H_1612442237
+#define SERENE_DBUS_INTERFACE_H_1612442237
 
 #include <QtCore/QObject>
 #include <QtCore/QByteArray>
@@ -43,13 +43,8 @@ public Q_SLOTS: // METHODS
         return asyncCallWithArgumentList(QLatin1String("asyncStdOutInvoke"), argumentList);
     }
 
-    inline QDBusPendingReply<QString> asyncStdOutSend()
-    {
-        QList<QVariant> argumentList;
-        return asyncCallWithArgumentList(QLatin1String("asyncStdOutSend"), argumentList);
-    }
-
 Q_SIGNALS: // SIGNALS
+    void syncStdOutSend(const QString &data);
 };
 
 namespace net {

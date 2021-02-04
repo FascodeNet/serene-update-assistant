@@ -9,8 +9,8 @@
  * before re-generating it.
  */
 
-#ifndef SERENE_DBUS_ADAPTOR_H_1612441625
-#define SERENE_DBUS_ADAPTOR_H_1612441625
+#ifndef SERENE_DBUS_ADAPTOR_H_1612442142
+#define SERENE_DBUS_ADAPTOR_H_1612442142
 
 #include <QtCore/QObject>
 #include <QtDBus/QtDBus>
@@ -37,6 +37,7 @@ class DbusAdaptor: public QDBusAbstractAdaptor
 "    <!-- QString -->\n"
 "    <method name=\"asyncStdOutInvoke\">\n"
 "      <arg direction=\"in\" type=\"s\" name=\"data\"/>\n"
+"      <arg direction=\"out\" type=\"s\"/>\n"
 "    </method>\n"
 "  </interface>\n"
         "")
@@ -46,7 +47,7 @@ public:
 
 public: // PROPERTIES
 public Q_SLOTS: // METHODS
-    void asyncStdOutInvoke(const QString &data);
+    QString asyncStdOutInvoke(const QString &data);
     QString asyncStdOutSend();
 Q_SIGNALS: // SIGNALS
 };

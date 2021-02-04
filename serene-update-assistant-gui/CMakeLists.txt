@@ -42,13 +42,7 @@ set(SOURCESKUN
     ansiescapecodehandler.cpp
     ansiescapecodehandler.h
     qtcassert.cpp
-    qtcassert.h
-    dbus_client.cpp
-    dbus_client.h
-    serene_dbus_interface.cpp
-    serene_dbus_interface.h
-    serene_dbus_adaptor.cpp
-    serene_dbus_adaptor.h)
+    qtcassert.h)
 
 qt5_create_translation(_qmFiles ${SOURCESKUN} ${TS_FILES})
 qt5_add_translation(_qmFiles ${TS_FILES})

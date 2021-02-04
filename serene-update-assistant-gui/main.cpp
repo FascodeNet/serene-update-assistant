@@ -20,6 +20,12 @@ int main(int argc, char *argv[])
     parser.process(QCoreApplication::arguments());
     if(parser.value(update_option) != nullptr){
         std::cout << "Update ver:" << parser.value(update_option).toStdString() << std::endl;
+        UpdaterCore core;
+        UpdaterCore::update_info uinfo;
+        uinfo.description="tintin";
+        uinfo.vername=parser.value(update_option);
+        uinfo.download_update_url="https://fascodenet.github.io/serenelinux-update-info/updates/33.0.0_33.0.1.sh";
+        core.update_admin(&uinfo);
         return 0;
     }
     /*MainWindow w;

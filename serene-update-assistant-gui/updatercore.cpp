@@ -127,8 +127,6 @@ bool UpdaterCore::update_admin(update_info* upinfo){
     close(download_file_f);
     umask(000);
     chmod(tmp_kun,0777);
-
-
     pid_t pid=fork();
     if(pid < 0){
         perror("fork");

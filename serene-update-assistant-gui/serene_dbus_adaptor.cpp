@@ -33,12 +33,10 @@ DbusAdaptor::~DbusAdaptor()
     // destructor
 }
 
-QString DbusAdaptor::asyncStdOutInvoke(const QString &data)
+void DbusAdaptor::asyncStdOutInvoke(const QString &data)
 {
     // handle method call net.fascode.serenelinux.serene_updater_assistant.dbus.asyncStdOutInvoke
-    QString out0;
-    QMetaObject::invokeMethod(parent(), "asyncStdOutInvoke", Q_RETURN_ARG(QString, out0), Q_ARG(QString, data));
-    return out0;
+    QMetaObject::invokeMethod(parent(), "asyncStdOutInvoke", Q_ARG(QString, data));
 }
 
 QString DbusAdaptor::asyncStdOutSend()

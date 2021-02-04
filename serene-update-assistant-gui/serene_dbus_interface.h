@@ -8,8 +8,8 @@
  * Do not edit! All changes made to it will be lost.
  */
 
-#ifndef SERENE_DBUS_INTERFACE_H_1612442142
-#define SERENE_DBUS_INTERFACE_H_1612442142
+#ifndef SERENE_DBUS_INTERFACE_H_1612442178
+#define SERENE_DBUS_INTERFACE_H_1612442178
 
 #include <QtCore/QObject>
 #include <QtCore/QByteArray>
@@ -36,7 +36,7 @@ public:
     ~NetFascodeSerenelinuxSerene_updater_assistantDbusInterface();
 
 public Q_SLOTS: // METHODS
-    inline QDBusPendingReply<QString> asyncStdOutInvoke(const QString &data)
+    inline QDBusPendingReply<> asyncStdOutInvoke(const QString &data)
     {
         QList<QVariant> argumentList;
         argumentList << QVariant::fromValue(data);

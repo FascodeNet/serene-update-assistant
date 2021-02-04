@@ -8,7 +8,6 @@
         <!-- QString -->
         <method name="asyncStdOutInvoke">
             <arg name="data" type="s" direction="in" />
-            <arg type="s" direction="out" />
         </method> 
     </interface>
 </node>

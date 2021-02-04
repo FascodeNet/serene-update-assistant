@@ -24,11 +24,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Network LinguistTools DBus REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Network LinguistTools DBus REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Network LinguistTools RemoteObjects REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Network LinguistTools RemoteObjects REQUIRED)
 
 set(TS_FILES serene-update-assistant-gui_ja_JP.ts)
 set(QT_QMAKE_EXECUTABLE /usr/bin/qmake-qt5)
+qt5_generate_repc(REPCS IPC_Serene.rep SOURCE)
 QT5_ADD_RESOURCES(RESOURCES resources.qrc)
 set(SOURCESKUN
     main.cpp
@@ -50,9 +51,8 @@ add_executable(serene-update-assistant-gui
     ${SOURCESKUN}
     ${RESOURCES}
     ${_qmFiles}
-    ${dbus_sources}
-    ${dbus_adaptors}
+    ${REPCS}
   )
 
 
-target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets curl Qt${QT_VERSION_MAJOR}::DBus )
+target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets curl Qt${QT_VERSION_MAJOR}::RemoteObjects )

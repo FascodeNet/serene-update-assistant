@@ -1,0 +1,7 @@
+#include <QtCore>
+#include <QString>
+class Serene_IPC
+{
+    SIGNAL(arrived_stdout(QString));
+    SLOT(void send_stdout(QString));
+};

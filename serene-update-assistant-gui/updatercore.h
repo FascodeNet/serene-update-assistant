@@ -17,6 +17,7 @@
 #include <QJsonArray>
 #include <QTextEdit>
 #include "ansiescapecodehandler.h"
+#include "rep_IPC_Serene_source.h"
 
 class UpdaterCore
 {

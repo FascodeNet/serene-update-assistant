@@ -24,8 +24,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Network LinguistTools REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Network LinguistTools REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Network LinguistTools DBus REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Network LinguistTools DBus REQUIRED)
 
 set(TS_FILES serene-update-assistant-gui_ja_JP.ts)
 set(QT_QMAKE_EXECUTABLE /usr/bin/qmake-qt5)
@@ -42,14 +42,23 @@ set(SOURCESKUN
     ansiescapecodehandler.cpp
     ansiescapecodehandler.h
     qtcassert.cpp
-    qtcassert.h)
+    qtcassert.h
+    dbus_client.cpp
+    dbus_client.h
+    serene_dbus_interface.cpp
+    serene_dbus_interface.h
+    serene_dbus_adaptor.cpp
+    serene_dbus_adaptor.h)
+
 qt5_create_translation(_qmFiles ${SOURCESKUN} ${TS_FILES})
 qt5_add_translation(_qmFiles ${TS_FILES})
 add_executable(serene-update-assistant-gui
     ${SOURCESKUN}
     ${RESOURCES}
     ${_qmFiles}
+    ${dbus_sources}
+    ${dbus_adaptors}
   )
 
 
-target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets curl )
+target_link_libraries(serene-update-assistant-gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets curl Qt${QT_VERSION_MAJOR}::DBus )

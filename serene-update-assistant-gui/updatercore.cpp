@@ -1,11 +1,11 @@
 #include "updatercore.h"
-
+#include <QApplication>
 typedef std::string String;
 template <typename T>
 using Vector=std::vector<T>;
 UpdaterCore::UpdaterCore()
 {
-
+    app_file_path=QCoreApplication::applicationFilePath();
 }
 std::string UpdaterCore::check_current_ver(){
     std::ifstream current_ver_file("/etc/serenelinux-release");
@@ -99,7 +99,7 @@ UpdaterCore::update_info UpdaterCore::get_update_info(){
 
 
 }
-bool UpdaterCore::update(update_info* upinfo,QTextEdit* log_textedit){
+bool UpdaterCore::update_admin(update_info* upinfo){
 
     CURL *curl;
     curl=curl_easy_init();
@@ -135,7 +135,7 @@ bool UpdaterCore::update(update_info* upinfo,QTextEdit* log_textedit){
         unlink(tmp_kun);
         exit(-1);
     }else if(pid ==0){
-        execlp("pkexec","pkexec",tmp_kun,NULL);
+        execlp(tmp_kun,tmp_kun,NULL);
         perror("exec");
         unlink(tmp_kun);
         exit(-1);
@@ -148,6 +148,28 @@ bool UpdaterCore::update(update_info* upinfo,QTextEdit* log_textedit){
         exit(-1);
     }
     unlink(tmp_kun);
+    //std::cout << script_data.toStdString() << std::endl;
+    return true;
+}
+
+bool UpdaterCore::update(update_info* upinfo,QTextEdit* log_textedit){
+    pid_t pid=fork();
+    if(pid < 0){
+        perror("fork");
+        exit(-1);
+    }else if(pid ==0){
+        execlp("pkexec","pkexec","/usr/bin/env",QString(QString("DISPLAY=") + QString(getenv("DISPLAY"))).toUtf8().data(),
+               QString("XAUTHORITY=" + QString(getenv("XAUTHORITY"))).toUtf8().data() ,
+               app_file_path.toUtf8().data(),"--update",upinfo->vername.toUtf8().data(),NULL);
+        perror("exec");
+        exit(-1);
+    }
+    int status;
+    pid_t responsekun = waitpid(pid, &status, 0);
+    if(responsekun < 0){
+        perror("waitpid");
+        exit(-1);
+    }
     //std::cout << script_data.toStdString() << std::endl;
     return true;
 }

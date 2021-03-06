@@ -4,7 +4,7 @@ Summary:	Serene linux update assistant(stub)
 	
 Version:	0.0.3
 	
-Release:	1%{?dist}
+Release:	2%{?dist}
 
 License:	MIT
 	
@@ -33,7 +33,9 @@ cd build
 cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..
 ninja -j4
 mkdir -p ${RPM_BUILD_ROOT}/usr/bin
+mkdir -p ${RPM_BUILD_ROOT}/usr/share/polkit-1/actions/
 cp serene-update-assistant-gui ${RPM_BUILD_ROOT}/usr/bin/
+cp ../net.fascode.serene.updater.policy ${RPM_BUILD_ROOT}/usr/share/polkit-1/actions/
 mkdir -p ${RPM_BUILD_ROOT}/etc/xdg/autostart/
 cat <<EOF > $RPM_BUILD_ROOT/etc/xdg/autostart/serene-update-assistant.desktop
 [Desktop Entry]
@@ -46,6 +48,7 @@ EOF
 	
 %files
 /etc/xdg/autostart/serene-update-assistant.desktop
+/usr/share/polkit-1/actions/net.fascode.serene.updater.policy
 /usr/bin/serene-update-assistant-gui
 
 %changelog

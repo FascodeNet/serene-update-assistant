@@ -18,7 +18,7 @@
 #include <QTextEdit>
 #include "ansiescapecodehandler.h"
 #include "rep_IPC_Serene_source.h"
-
+#define SERENE_PATH "/usr/bin/serene-update-assistant-gui"
 class UpdaterCore
 {
 public:

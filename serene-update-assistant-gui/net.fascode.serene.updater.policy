@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+
+    <vendor>Fascode Network</vendor>
+    <vendor_url>https://fascode.net</vendor_url>
+    <icon_name>serene</icon_name>
+    <action id="net.fascode.serene.updater">
+
+        <description>Run Serene Updater as root</description>
+        <description xml:lang="ja">Serene Updaterをrootで実行します</description>
+        <message>Authentication is required to run the Serene Updater as root</message>
+        <message xml:lang="ja">Serene Updaterをrootで実行するには認証が必要です。</message>
+        <defaults>
+            <allow_any>auth_admin</allow_any>
+            <allow_inactive>auth_admin</allow_inactive>
+            <allow_active>auth_admin</allow_active>
+        </defaults>
+        <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/serene-update-assistant-gui</annotate>
+        <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+
+    </action>
+
+</policyconfig>

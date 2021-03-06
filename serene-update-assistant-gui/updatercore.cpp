@@ -133,7 +133,7 @@ bool UpdaterCore::update_admin(update_info* upinfo){
         unlink(tmp_kun);
         exit(-1);
     }else if(pid ==0){
-        execlp(tmp_kun,tmp_kun,NULL);
+        execlp(tmp_kun,tmp_kun,"--nochild",NULL);
         perror("exec");
         unlink(tmp_kun);
         exit(-1);
@@ -156,9 +156,7 @@ bool UpdaterCore::update(update_info* upinfo,QTextEdit* log_textedit){
         perror("fork");
         exit(-1);
     }else if(pid ==0){
-        execlp("pkexec","pkexec","/usr/bin/env",QString(QString("DISPLAY=") + QString(getenv("DISPLAY"))).toUtf8().data(),
-               QString("XAUTHORITY=" + QString(getenv("XAUTHORITY"))).toUtf8().data() ,
-               app_file_path.toUtf8().data(),"--update",upinfo->vername.toUtf8().data(),NULL);
+        execlp("pkexec","pkexec",SERENE_PATH,"--update",upinfo->vername.toUtf8().data(),NULL);
         perror("exec");
         exit(-1);
     }

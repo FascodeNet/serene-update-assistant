@@ -22,9 +22,10 @@ int main(int argc, char *argv[])
         std::cout << "Update ver:" << parser.value(update_option).toStdString() << std::endl;
         UpdaterCore core;
         UpdaterCore::update_info uinfo;
-        uinfo.description="tintin";
+        /*uinfo.description="tintin";
         uinfo.vername=parser.value(update_option);
-        uinfo.download_update_url="https://fascodenet.github.io/serenelinux-update-info/updates/33.0.0_33.0.1.sh";
+        uinfo.download_update_url="https://fascodenet.github.io/serenelinux-update-info/updates/33.0.0_33.0.1.sh";*/
+        uinfo = core.get_update_info();
         core.update_admin(&uinfo);
         return 0;
     }

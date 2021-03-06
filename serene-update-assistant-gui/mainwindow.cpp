@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <QMessageBox>
 MainWindow::MainWindow(QSystemTrayIcon *traykun,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -57,6 +58,14 @@ void MainWindow::on_UpdateCheckButton_clicked()
         //trayiconkun->setIcon(QIcon("://icon_circle_arrived.png"));
         send_notification();
 
+    }else{
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Serene Update Assistant");
+        msgBox.setText(tr("Update NOT FOUND"));
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setDefaultButton(QMessageBox::Ok);
+        msgBox.setIcon(QMessageBox::Information);
+        msgBox.exec();
     }
 }
 

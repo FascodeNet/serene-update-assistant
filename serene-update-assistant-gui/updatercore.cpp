@@ -133,7 +133,7 @@ bool UpdaterCore::update_admin(update_info* upinfo){
         unlink(tmp_kun);
         exit(-1);
     }else if(pid ==0){
-        execlp(tmp_kun,tmp_kun,"--nochild",NULL);
+        execlp(tmp_kun,tmp_kun,NULL);
         perror("exec");
         unlink(tmp_kun);
         exit(-1);

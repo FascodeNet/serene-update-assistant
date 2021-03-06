@@ -45,7 +45,7 @@
         <translation>新しいバージョン%sに更新可能です。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="64"/>
+        <location filename="mainwindow.cpp" line="66"/>
         <source>Update NOT FOUND</source>
         <translation type="unfinished"></translation>
     </message>

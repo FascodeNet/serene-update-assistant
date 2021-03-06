@@ -43,6 +43,8 @@ void MainWindow::send_notification(){
 }
 void MainWindow::on_UpdateCheckButton_clicked()
 {
+
+    ui->currentosver_label->setText(QString::fromStdString(core->check_current_ver()));
     //ui->jsontestTextEdit->setPlainText(core->get_json());
     ui->runupdatebutton->setEnabled(false);
     infokun=core->get_update_info();

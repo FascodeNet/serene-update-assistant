@@ -2,7 +2,7 @@ Name:		serene-update-assistant
 	
 Summary:	Serene linux update assistant(stub)
 	
-Version:	0.0.4
+Version:	0.0.5
 	
 Release:	1%{?dist}
 
@@ -14,7 +14,7 @@ Requires:       unzip,qt5-qtbase,qt5-qtbase-gui,qt5-qtremoteobjects,libcurl
 
 BuildRequires: cmake,qt5-qtbase-devel,qt5-linguist,ninja-build,clang,qt5-qtremoteobjects-devel,libcurl-devel
 %global debug_package %{nil}
-Source0: https://github.com/FascodeNet/serene-update-assistant/archive/v0.0.0.4.tar.gz
+Source0: https://github.com/FascodeNet/serene-update-assistant/archive/v0.0.0.5.tar.gz
 %description
 Serene Linux Updater Assistant
  
@@ -22,7 +22,7 @@ Serene Linux Updater Assistant
 %prep
 rm -rf %{buildroot}
 
-%setup -n serene-update-assistant-0.0.0.4
+%setup -n serene-update-assistant-0.0.0.5
  
 	
 %build

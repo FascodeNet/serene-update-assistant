@@ -101,5 +101,6 @@ void MainWindow::on_runupdatebutton_clicked()
     std::cout << "debug update button clicked" << std::endl;
     std::cout << infokun.download_update_url.toStdString() << std::endl;
     core->update(&infokun,ui->LogTextEdit);
+    updatecurrentver();
 
 }

@@ -5,11 +5,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     a.setApplicationName("Serene Updater Assistant");
-    a.setApplicationVersion("0.0.0.4");
+    a.setApplicationVersion("0.0.0.6");
     a.setQuitOnLastWindowClosed(false);
     QTranslator translator;
     //translator.load("serene-update-assistant-gui_ja_JP");
-    translator.load(QLatin1String("serene-update-assistant-gui_" )+QLocale::system().name());
+    translator.load(QLatin1String("serene-update-assistant-gui_" )+QLocale::system().name(),"/usr/share/serene-update-assistant");
     a.installTranslator(&translator);
     QCommandLineParser  parser;
     parser.setApplicationDescription("Serene Updater Assistant");

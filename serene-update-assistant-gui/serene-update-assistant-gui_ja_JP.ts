@@ -48,12 +48,12 @@
     <message>
         <location filename="mainwindow.cpp" line="70"/>
         <source>Update NOT FOUND</source>
-        <translation type="unfinished"></translation>
+        <translation>更新がありません。</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="78"/>
         <source>Update Not Found!</source>
-        <translation type="unfinished"></translation>
+        <translation>更新がありません。</translation>
     </message>
 </context>
 <context>

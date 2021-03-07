@@ -22,7 +22,7 @@ Serene Linux Updater Assistant
 %prep
 rm -rf %{buildroot}
 
-%setup -n serene-update-assistant-v0.0.0.4
+%setup -n serene-update-assistant-0.0.0.4
  
 	
 %build

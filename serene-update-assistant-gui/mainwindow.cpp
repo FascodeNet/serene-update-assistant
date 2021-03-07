@@ -16,7 +16,10 @@ MainWindow::MainWindow(QSystemTrayIcon *traykun,QWidget *parent)
     ui->currentosver_label->setText(QString::fromStdString(core->check_current_ver()));
     on_UpdateCheckButton_clicked();
 }
+void MainWindow::updatecurrentver(){
 
+    ui->currentosver_label->setText(QString::fromStdString(core->check_current_ver()));
+}
 MainWindow::~MainWindow()
 {
     delete ui;

@@ -24,5 +24,6 @@ UpdaterTray::UpdaterTray(QWidget *parent)
 
 }
 void UpdaterTray::Show_App(){
+    main_win->updatecurrentver();
     main_win->show();
 }

@@ -17,6 +17,8 @@ public:
     MainWindow(QSystemTrayIcon *traykun, QWidget *parent = nullptr);
     ~MainWindow();
 
+    void updatecurrentver();
+
 private slots:
     void on_UpdateCheckButton_clicked();
 

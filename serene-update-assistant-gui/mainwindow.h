@@ -28,5 +28,6 @@ private:
     UpdaterCore::update_info infokun;
     QSystemTrayIcon* trayiconkun;
     void send_notification();
+    bool isinited=false;
 };
 #endif // MAINWINDOW_H

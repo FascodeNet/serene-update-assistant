@@ -6,6 +6,7 @@
     <message>
         <location filename="mainwindow.ui" line="14"/>
         <location filename="mainwindow.cpp" line="25"/>
+        <location filename="mainwindow.cpp" line="74"/>
         <source>Serene Updater Assistant</source>
         <translation>Serene Updater Assistant</translation>
     </message>
@@ -45,8 +46,13 @@
         <translation>新しいバージョン%sに更新可能です。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="66"/>
+        <location filename="mainwindow.cpp" line="67"/>
         <source>Update NOT FOUND</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="75"/>
+        <source>Update Not Found!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

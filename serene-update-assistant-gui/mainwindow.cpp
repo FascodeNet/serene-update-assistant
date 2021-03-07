@@ -29,7 +29,7 @@ void MainWindow::send_notification(){
         perror("fork");
         exit(-1);
     }else if(pid ==0){
-        execlp("notify-send","notify-send","-a",app_name.toUtf8().data(),"-t","5000","-i","serene",app_name.toUtf8().data(),contents.toUtf8().data());
+        execlp("notify-send","notify-send","-a",app_name.toUtf8().data(),"-t","5000","-i","serene",app_name.toUtf8().data(),contents.toUtf8().data(),NULL);
         perror("exec");
         exit(-1);
     }
@@ -61,13 +61,35 @@ void MainWindow::on_UpdateCheckButton_clicked()
         send_notification();
 
     }else{
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Serene Update Assistant");
-        msgBox.setText(tr("Update NOT FOUND"));
-        msgBox.setStandardButtons(QMessageBox::Ok);
-        msgBox.setDefaultButton(QMessageBox::Ok);
-        msgBox.setIcon(QMessageBox::Information);
-        msgBox.exec();
+        if(isinited){
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("Serene Update Assistant");
+            msgBox.setText(tr("Update NOT FOUND"));
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.setDefaultButton(QMessageBox::Ok);
+            msgBox.setIcon(QMessageBox::Information);
+            msgBox.exec();
+        }else{
+
+            QString app_name=tr("Serene Updater Assistant");
+            QString contents=tr("Update Not Found!");
+            pid_t pid=fork();
+            if(pid < 0){
+                perror("fork");
+                exit(-1);
+            }else if(pid ==0){
+                execlp("notify-send","notify-send","-a",app_name.toUtf8().data(),"-t","5000","-i","serene",app_name.toUtf8().data(),contents.toUtf8().data(),NULL);
+                perror("exec");
+                exit(-1);
+            }
+            int status;
+            pid_t responsekun = waitpid(pid, &status, 0);
+            if(responsekun < 0){
+                perror("waitpid");
+                exit(-1);
+            }
+            isinited=true;
+        }
     }
 }
 
